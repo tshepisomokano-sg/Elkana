@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elkana Laundry Services - Witbank, eMalahleni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#060a10;
+    --navy:#0B1420;
+    --navy-raised:#0F1B2B;
+    --line:#1D2E40;
+    --line-bright:#2A4258;
+    --blue:#2FA6E8;
+    --blue-bright:#5FCBFF;
+    --blue-dim:#1C5C82;
+    --white:#F5F8FA;
+    --grey:#8CA0B3;
+    --grey-dim:#5E7185;
+    --radius:4px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    color:var(--white);
+    line-height:1.12;
+    letter-spacing:.01em;
+  }
+
+  .script{font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500;}
+
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  .glow-text{
+    text-shadow:0 0 10px rgba(47,166,232,.55), 0 0 26px rgba(47,166,232,.25);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:14px 28px;
+    border-radius:2px;
+    font-family:'Oswald', sans-serif;
+    font-weight:500; font-size:14.5px;
+    letter-spacing:.04em; text-transform:uppercase;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .btn-solid{background:var(--blue); color:#04121C; border-color:var(--blue);}
+  .btn-solid:hover{background:var(--blue-bright); border-color:var(--blue-bright); box-shadow:0 0 22px rgba(47,166,232,.5);}
+  .btn-line{border-color:var(--line-bright); color:var(--white); background:transparent;}
+  .btn-line:hover{border-color:var(--blue); box-shadow:0 0 16px rgba(47,166,232,.3); color:var(--blue-bright);}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(6,10,16,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0;}
+  .brand{display:flex; align-items:center; gap:13px;}
+  .brand-mark{
+    width:44px; height:44px; border-radius:50%;
+    border:1.5px solid var(--blue);
+    box-shadow:0 0 10px rgba(47,166,232,.4), inset 0 0 8px rgba(47,166,232,.25);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; background:var(--navy);
+  }
+  .brand-mark svg{width:24px; height:24px;}
+  .brand-name{font-family:'Cinzel', serif; font-weight:600; font-size:19px; letter-spacing:.08em; text-transform:uppercase; color:var(--white);}
+  .brand-sub{font-family:'Oswald',sans-serif; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--grey-dim);}
+  .nav-links{display:flex; gap:32px; font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:.06em; text-transform:uppercase;}
+  .nav-links a{color:var(--grey); transition:color .15s;}
+  .nav-links a:hover{color:var(--blue-bright);}
+  .nav-cta{display:flex; align-items:center; gap:14px;}
+  .nav-phone{font-family:'Oswald',sans-serif; font-weight:500; font-size:14px; display:flex; align-items:center; gap:7px; color:var(--white);}
+  .nav-phone svg{color:var(--blue);}
+  @media (max-width:900px){ .nav-links{display:none;} }
+  @media (max-width:560px){ .nav-phone span.txt{display:none;} .brand-sub{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:80px 0 90px;
+    position:relative;
+    background:
+      radial-gradient(ellipse 700px 420px at 82% 15%, rgba(47,166,232,.14), transparent 60%),
+      var(--black);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; position:relative; z-index:1;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:44px;} }
+
+  .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;}
+  .badge{
+    font-family:'Oswald',sans-serif;
+    font-size:11.5px; font-weight:500; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--blue-bright);
+    border:1px solid var(--line-bright);
+    padding:7px 14px; border-radius:2px;
+  }
+  .hero .eyebrow{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--blue-bright); margin-bottom:6px;}
+  .hero h1{font-size:clamp(36px,5vw,58px); text-transform:uppercase; margin-bottom:22px;}
+  .hero-sub{font-size:17.5px; color:var(--grey); max-width:48ch; margin-bottom:34px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;}
+  .hero-trust{display:flex; gap:30px; flex-wrap:wrap; padding-top:26px; border-top:1px solid var(--line);}
+  .trust-stat{display:flex; flex-direction:column;}
+  .trust-num{font-family:'Oswald',serif; font-weight:600; font-size:26px; color:var(--blue-bright);}
+  .trust-label{font-size:12px; color:var(--grey-dim); text-transform:uppercase; letter-spacing:.05em; font-family:'Oswald',sans-serif;}
+
+  /* Hero art: neon washing-machine porthole */
+  .hero-art{display:flex; align-items:center; justify-content:center; position:relative;}
+  .hero-art svg{width:100%; max-width:380px; height:auto;}
+
+  /* ---------- Section shells ---------- */
+  section{padding:88px 0;}
+  .section-alt{background:var(--navy);}
+  .section-head{max-width:640px; margin-bottom:50px;}
+  .section-head .kicker{font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--blue-bright); font-size:19px; margin-bottom:8px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:14px; text-transform:uppercase;}
+  .section-head p{color:var(--grey); font-size:16.5px;}
+
+  /* ---------- Services ---------- */
+  .service-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  @media (max-width:860px){ .service-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .service-grid{grid-template-columns:1fr;} }
+  .service-cell{background:var(--black); padding:32px 26px; transition:background .2s;}
+  .service-cell:hover{background:var(--navy-raised);}
+  .service-cell .icon{width:32px; height:32px; margin-bottom:18px; color:var(--blue);}
+  .service-cell h3{font-size:16.5px; font-weight:600; letter-spacing:.03em; text-transform:uppercase; margin-bottom:9px;}
+  .service-cell p{font-size:14px; color:var(--grey);}
+
+  /* ---------- Pricing ---------- */
+  .price-panel{border:1px solid var(--line); background:var(--black);}
+  .price-tabs{display:flex; border-bottom:1px solid var(--line); flex-wrap:wrap;}
+  .price-tab{
+    flex:1; min-width:120px; text-align:center; padding:17px 10px;
+    font-family:'Oswald',sans-serif; font-weight:500; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--grey-dim); cursor:pointer; border-bottom:2px solid transparent; background:transparent;
+  }
+  .price-tab.active{color:var(--blue-bright); border-bottom-color:var(--blue); background:var(--navy);}
+  .price-list{display:none; padding:8px 0;}
+  .price-list.active{display:block;}
+  .price-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:16px 30px; border-bottom:1px solid var(--line); font-size:15.5px;
+  }
+  .price-row:last-child{border-bottom:none;}
+  .price-row .name{font-weight:500;}
+  .price-row .unit{font-size:12px; color:var(--grey-dim); font-weight:400; margin-left:6px; text-transform:uppercase; letter-spacing:.03em;}
+  .price-row .amount{font-family:'Oswald',sans-serif; font-weight:600; font-size:17px; color:var(--blue-bright); white-space:nowrap;}
+  .price-note{padding:16px 30px 24px; font-size:13px; color:var(--grey-dim); font-style:italic; font-family:'Cormorant Garamond',serif; font-size:16px;}
+
+  /* ---------- Estimator ---------- */
+  .estimator{
+    border:1px solid var(--line-bright);
+    background:linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+    box-shadow:0 0 40px rgba(47,166,232,.08);
+    padding:46px;
+    display:grid; grid-template-columns:.9fr 1.1fr; gap:46px;
+  }
+  @media (max-width:860px){ .estimator{grid-template-columns:1fr; padding:32px 24px;} }
+  .estimator .section-head{margin-bottom:0;}
+  .estimator-form{background:var(--black); border:1px solid var(--line); padding:28px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block; font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:.06em; text-transform:uppercase; font-weight:500; margin-bottom:9px; color:var(--grey);}
+  .field select,.field input{
+    width:100%; padding:13px 14px;
+    border:1.5px solid var(--line-bright); border-radius:2px;
+    font-family:'Inter',sans-serif; font-size:15px;
+    background:var(--navy); color:var(--white);
+  }
+  .field select:focus,.field input:focus{outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(47,166,232,.18);}
+  .estimate-result{
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--navy); border:1px solid var(--line-bright);
+    padding:17px 18px; margin:18px 0 20px;
+  }
+  .estimate-result .lbl{font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--grey);}
+  .estimate-result .val{font-family:'Oswald',sans-serif; font-size:28px; font-weight:600; color:var(--blue-bright);}
+  .estimator-form .btn{width:100%; justify-content:center;}
+
+  /* ---------- Process ---------- */
+  .process{display:grid; grid-template-columns:repeat(3,1fr); gap:0;}
+  @media (max-width:760px){ .process{grid-template-columns:1fr;} }
+  .step{padding:0 30px 0 0;}
+  .step:not(:last-child){border-right:1px solid var(--line);}
+  @media (max-width:760px){
+    .step{padding:0 0 30px 0; border-right:none !important; border-bottom:1px solid var(--line);}
+    .step:last-child{border-bottom:none;}
+  }
+  .step-num{font-family:'Oswald',sans-serif; font-size:15px; font-weight:600; color:var(--blue); margin-bottom:14px; letter-spacing:.05em;}
+  .step h3{font-size:18px; margin-bottom:10px; text-transform:uppercase;}
+  .step p{color:var(--grey); font-size:14.5px;}
+
+  /* ---------- Why us ---------- */
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  @media (max-width:860px){ .why-grid{grid-template-columns:1fr; gap:34px;} }
+  .why-list{list-style:none;}
+  .why-list li{display:flex; gap:18px; padding:22px 0; border-bottom:1px solid var(--line);}
+  .why-list li:first-child{padding-top:0;}
+  .why-list .mark{font-family:'Oswald',sans-serif; color:var(--blue); font-weight:600; font-size:16px;}
+  .why-list h3{font-size:16.5px; margin-bottom:6px; text-transform:uppercase;}
+  .why-list p{font-size:14px; color:var(--grey);}
+  .reviews{background:var(--navy); border:1px solid var(--line-bright); padding:34px; overflow:hidden;}
+  .reviews-head{display:flex; align-items:center; gap:9px; font-family:'Oswald',sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--grey); margin-bottom:24px;}
+  .review-slider{overflow:hidden;}
+  .review-track{display:flex; transition:transform .4s ease;}
+  .review-card{flex:0 0 100%; padding:0 2px;}
+  .stars{color:var(--blue-bright); font-size:20px; letter-spacing:3px; margin-bottom:16px;}
+  .review-card p{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--white); margin-bottom:18px; line-height:1.5; min-height:96px;}
+  .review-card .who{font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--grey-dim);}
+  .review-controls{display:flex; align-items:center; justify-content:center; gap:18px; margin-top:26px;}
+  .review-arrow{
+    width:34px; height:34px; border-radius:50%; border:1px solid var(--line-bright);
+    background:transparent; color:var(--white); font-size:18px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .2s, color .2s;
+  }
+  .review-arrow:hover{border-color:var(--blue); color:var(--blue-bright);}
+  .review-dots{display:flex; gap:8px;}
+  .review-dot{width:7px; height:7px; border-radius:50%; background:var(--line-bright); cursor:pointer; border:none; padding:0;}
+  .review-dot.active{background:var(--blue-bright);}
+
+  /* ---------- Location ---------- */
+  .loc-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  @media (max-width:860px){ .loc-grid{grid-template-columns:1fr; gap:36px;} }
+  .hours-row{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-size:15px;}
+  .hours-row:last-child{border-bottom:none;}
+  .hours-row .day{font-family:'Oswald',sans-serif; font-weight:500; letter-spacing:.02em;}
+  .hours-row .time{color:var(--grey);}
+  .contact-card{border:1px solid var(--line); padding:28px; margin-top:24px;}
+  .contact-row{display:flex; gap:14px; align-items:flex-start; margin-bottom:18px;}
+  .contact-row:last-child{margin-bottom:0;}
+  .contact-row .icon{width:19px; height:19px; flex-shrink:0; margin-top:2px; color:var(--blue);}
+  .contact-row .lbl{font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--grey-dim); margin-bottom:3px;}
+  .contact-row .val{font-size:15px; font-weight:500;}
+  .map-frame{border:1px solid var(--line); overflow:hidden; height:280px; filter:grayscale(.3) contrast(1.05) brightness(.85);}
+  .map-frame iframe{width:100%; height:100%; border:0;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy); border-top:1px solid var(--line); padding:52px 0 28px;}
+  .foot-grid{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; margin-bottom:36px;}
+  .foot-brand{max-width:320px;}
+  .foot-brand p{font-size:14px; color:var(--grey-dim); margin-top:12px;}
+  .foot-col h4{font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--grey-dim); font-weight:500; margin-bottom:15px;}
+  .foot-col a{display:block; font-size:14.5px; color:var(--grey); margin-bottom:11px;}
+  .foot-col a:hover{color:var(--blue-bright);}
+  .foot-bottom{border-top:1px solid var(--line); padding-top:22px; font-size:12.5px; color:var(--grey-dim); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} .btn{transition:none;} }
+  :focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5FCBFF" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M9 6v0M12 6v0M15 6v0" stroke-linecap="round" stroke-width="1.8"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">Elkana</div>
+        <div class="brand-sub">Laundry Services · Since 2013</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#estimate">Get a quote</a>
+      <a href="#visit">Visit us</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+27658517691">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="txt">065 851 7691</span>
+      </a>
+      <a class="btn btn-solid" href="https://wa.me/27658517691?text=Hi%20Elkana%20Laundry%2C%20I%27d%20like%20to%20book%20a%20pickup." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="badge-row">
+          <span class="badge">Open 7 days</span>
+          <span class="badge">Pickup &amp; delivery available</span>
+        </div>
+        <div class="eyebrow">We do it professionally!!</div>
+        <h1 class="glow-text">Clean. Fresh.<br>Quality. Care.</h1>
+        <p class="hero-sub">Professional laundry, dry cleaning, upholstery and alterations in Del Judor - trusted by families since 2013.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#estimate">Get an instant quote</a>
+          <a class="btn btn-line" href="tel:+27658517691">Call the shop</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-stat"><span class="trust-num">13 yrs</span><span class="trust-label">In Del Judor</span></div>
+          <div class="trust-stat"><span class="trust-num">7</span><span class="trust-label">Services, one shop</span></div>
+          <div class="trust-stat"><span class="trust-num">7–7</span><span class="trust-label">Open weekdays</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="160" cy="160" r="132" fill="none" stroke="#1D2E40" stroke-width="1"/>
+          <circle cx="160" cy="160" r="108" fill="#0B1420" stroke="#2FA6E8" stroke-width="2" opacity="0.9"/>
+          <circle cx="160" cy="160" r="108" fill="none" stroke="#5FCBFF" stroke-width="1" opacity="0.35"/>
+          <circle cx="160" cy="160" r="78" fill="none" stroke="#2FA6E8" stroke-width="1.5" stroke-dasharray="4 7" opacity="0.6"/>
+          <circle cx="160" cy="160" r="52" fill="#0F1B2B" stroke="#5FCBFF" stroke-width="2"/>
+          <circle cx="160" cy="160" r="36" fill="none" stroke="#2FA6E8" stroke-width="1.2" opacity="0.7"/>
+          <!-- control dots -->
+          <circle cx="120" cy="66" r="3.5" fill="#2FA6E8"/>
+          <circle cx="140" cy="66" r="3.5" fill="#2FA6E8"/>
+          <circle cx="160" cy="66" r="3.5" fill="#2FA6E8"/>
+          <!-- bubbles -->
+          <circle cx="248" cy="90" r="9" fill="none" stroke="#5FCBFF" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="266" cy="112" r="5" fill="none" stroke="#5FCBFF" stroke-width="1.2" opacity="0.6"/>
+          <circle cx="238" cy="118" r="4" fill="#5FCBFF" opacity="0.5"/>
+          <circle cx="60" cy="230" r="6" fill="none" stroke="#2FA6E8" stroke-width="1.2" opacity="0.5"/>
+          <circle cx="46" cy="248" r="3" fill="#2FA6E8" opacity="0.5"/>
+          <text x="160" y="300" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="16" fill="#5E7185">since 2013</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Our services</div>
+        <h2>Everything a household needs</h2>
+        <p>From the everyday wash to the once-a-year wedding dress, Elkana handles fabric, leather and upholstery under one roof.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-cell">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="13" r="6"/><circle cx="12" cy="13" r="2.5"/><circle cx="7" cy="6" r=".8" fill="currentColor" stroke="none"/></svg>
+          <h3>Wash, dry &amp; iron</h3>
+          <p>Everyday laundry, folded or pressed and ready to wear. Priced per kilogram.</p>
+        </div>
+        <div class="service-cell">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3v6a3 3 0 0 0 6 0V3M6 3h6"/><path d="M18 3v14a3 3 0 0 1-6 0"/></svg>
+          <h3>Dry cleaning</h3>
+          <p>Suits, blazers, leather trousers and wedding wear given specialist care.</p>
+        </div>
+        <div class="service-cell">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><path d="M2 18h4v3H4a2 2 0 0 1-2-2v-1zM18 18h4v1a2 2 0 0 1-2 2h-2v-3z"/></svg>
+          <h3>Upholstery</h3>
+          <p>Couches and chairs cleaned in place, or re-upholstered - free quote on request.</p>
+        </div>
+        <div class="service-cell">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+          <h3>Mattress wash</h3>
+          <p>Single, double, queen and king sizes, deep-cleaned in your home or ours.</p>
+        </div>
+        <div class="service-cell">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18c0-2 2-3 5-3s5 1 5 3M13 15c1-3 3-4 6-4"/><path d="M4 18h16v2H4z"/></svg>
+          <h3>Shoes &amp; caps</h3>
+          <p>Sneakers revived, soles fixed, hats and caps cleaned back to fresh.</p>
+        </div>
+        <div class="service-cell">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M4 6h16M6 6l1 14h10l1-14"/></svg>
+          <h3>Carpet cleaning</h3>
+          <p>Deep-steamed, priced per square metre, right where the carpet lies.</p>
+        </div>
+        <div class="service-cell">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l4 16M20 4l-4 16M4 4h16M8 12h8"/></svg>
+          <h3>Alterations &amp; repairs</h3>
+          <p>Hems, zips, resizing and repairs on all types of clothing and fabric.</p>
+        </div>
+        <div class="service-cell">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="15" height="13" rx="2"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7.5" cy="20" r="1.6"/><circle cx="17.5" cy="20" r="1.6"/></svg>
+          <h3>Pickup &amp; delivery</h3>
+          <p>On time, every time - we come to you, charged by distance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Price list</div>
+        <h2>Straightforward pricing</h2>
+        <p>The same price list you'd find on the wall in-store, browsable from your phone.</p>
+      </div>
+
+      <div class="price-panel">
+        <div class="price-tabs">
+          <button class="price-tab active" data-tab="laundry">Laundry</button>
+          <button class="price-tab" data-tab="dry">Dry cleaning</button>
+          <button class="price-tab" data-tab="mattress">Mattress</button>
+          <button class="price-tab" data-tab="shoes">Shoes &amp; extras</button>
+        </div>
+
+        <div class="price-list active" data-panel="laundry">
+          <div class="price-row"><span class="name">Wash · Dry · Iron<span class="unit">per kg</span></span><span class="amount">R35.00</span></div>
+          <div class="price-row"><span class="name">Wash &amp; Fold<span class="unit">per kg</span></span><span class="amount">R33.00</span></div>
+          <div class="price-row"><span class="name">Ironing only<span class="unit">per kg</span></span><span class="amount">R30.00</span></div>
+          <div class="price-row"><span class="name">Blankets &amp; comforters<span class="unit">per kg</span></span><span class="amount">R35.00</span></div>
+          <div class="price-row"><span class="name">Heavy curtains<span class="unit">per kg</span></span><span class="amount">R36.00</span></div>
+          <div class="price-row"><span class="name">Lace curtains<span class="unit">per kg</span></span><span class="amount">R42.00</span></div>
+          <div class="price-note">We also colour garments and hats - price given on viewing.</div>
+        </div>
+
+        <div class="price-list" data-panel="dry">
+          <div class="price-row"><span class="name">Shirts</span><span class="amount">R30.00</span></div>
+          <div class="price-row"><span class="name">Trousers / jeans</span><span class="amount">R80.00</span></div>
+          <div class="price-row"><span class="name">Blazer <span class="unit">regular R100</span></span><span class="amount">R100.00</span></div>
+          <div class="price-row"><span class="name">Leather trousers</span><span class="amount">R150.00</span></div>
+          <div class="price-row"><span class="name">2-piece suit</span><span class="amount">R200.00</span></div>
+          <div class="price-row"><span class="name">3-piece suit</span><span class="amount">R300.00</span></div>
+          <div class="price-note">Wedding dresses, winter coats and leather jackets - price given on viewing.</div>
+        </div>
+
+        <div class="price-list" data-panel="mattress">
+          <div class="price-row"><span class="name">Single</span><span class="amount">R250.00</span></div>
+          <div class="price-row"><span class="name">Double</span><span class="amount">R300.00</span></div>
+          <div class="price-row"><span class="name">Queen &amp; King</span><span class="amount">R390.00</span></div>
+          <div class="price-note">Carpet cleaning: R55.00 per square metre.</div>
+        </div>
+
+        <div class="price-list" data-panel="shoes">
+          <div class="price-row"><span class="name">Sneakers</span><span class="amount">R150.00</span></div>
+          <div class="price-row"><span class="name">White sneakers</span><span class="amount">R200.00</span></div>
+          <div class="price-row"><span class="name">Hats / caps</span><span class="amount">R70.00</span></div>
+          <div class="price-note">We revive shoes and vellies, fix soles and bring your shoes back to life.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTIMATOR -->
+  <section id="estimate">
+    <div class="wrap">
+      <div class="estimator">
+        <div class="section-head">
+          <div class="kicker">Instant quote</div>
+          <h2>Know the price before you drive over</h2>
+          <p>Pick a service and enter your quantity - we'll work out the price and hand you a ready-made WhatsApp message to send straight to the shop.</p>
+        </div>
+
+        <div class="estimator-form">
+          <div class="field">
+            <label for="svc">Service</label>
+            <select id="svc">
+              <option value="washdry" data-rate="35" data-unit="kg">Wash · Dry · Iron (per kg)</option>
+              <option value="washfold" data-rate="33" data-unit="kg">Wash &amp; Fold (per kg)</option>
+              <option value="iron" data-rate="30" data-unit="kg">Ironing only (per kg)</option>
+              <option value="blankets" data-rate="35" data-unit="kg">Blankets &amp; comforters (per kg)</option>
+              <option value="heavycurt" data-rate="36" data-unit="kg">Heavy curtains (per kg)</option>
+              <option value="lacecurt" data-rate="42" data-unit="kg">Lace curtains (per kg)</option>
+              <option value="shirts" data-rate="30" data-unit="item">Dry clean - shirts (per item)</option>
+              <option value="trousers" data-rate="80" data-unit="item">Dry clean - trousers / jeans (per item)</option>
+              <option value="suit2" data-rate="200" data-unit="item">Dry clean - 2-piece suit (per item)</option>
+              <option value="suit3" data-rate="300" data-unit="item">Dry clean - 3-piece suit (per item)</option>
+              <option value="sneakers" data-rate="150" data-unit="item">Sneaker clean (per pair)</option>
+              <option value="carpet" data-rate="55" data-unit="m²">Carpet cleaning (per m²)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="qty">Quantity <span id="qtyUnitLabel">(kg)</span></label>
+            <input type="number" id="qty" min="0.5" step="0.5" value="5">
+          </div>
+
+          <div class="estimate-result">
+            <span class="lbl">Estimated total</span>
+            <span class="val" id="estTotal">R175.00</span>
+          </div>
+
+          <a class="btn btn-solid" id="waLink" href="#" target="_blank" rel="noopener">Send to WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">How it works</div>
+        <h2>Pickup &amp; delivery, made easy</h2>
+        <p>Don't feel like the drive? We come to you - charges based on distance.</p>
+      </div>
+      <div class="process">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Book your slot</h3>
+          <p>Call or WhatsApp us with your address and what needs cleaning - we'll confirm a pickup window that suits you.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>We collect &amp; clean</h3>
+          <p>Your items are weighed.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Fresh, back to your door</h3>
+          <p>Folded, hung and delivered on time - every time, as promised.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section>
+    <div class="wrap why-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:30px;">
+          <div class="kicker">Why choose us</div>
+          <h2>Why Del Judor trusts Elkana</h2>
+        </div>
+        <ul class="why-list">
+          <li>
+            <span class="mark">01</span>
+            <div><h3>Thirteen years, same neighbourhood</h3><p>Serving Del Judor since 2013, with a storefront you can walk into any day of the week.</p></div>
+          </li>
+          <li>
+            <span class="mark">02</span>
+            <div><h3>One shop, every fabric job</h3><p>Laundry, dry cleaning, upholstery, alterations and shoe care - no need to visit four different places.</p></div>
+          </li>
+          <li>
+            <span class="mark">03</span>
+            <div><h3>Open long hours, seven days a week</h3><p>Weekday mornings before work or weekend afternoons - there's always a window that works.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="reviews">
+        <div class="reviews-head">
+          <svg class="g-icon" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          <span>Google reviews</span>
+        </div>
+
+        <div class="review-slider">
+          <div class="review-track" id="reviewTrack">
+            <div class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>Brought in my laundry in the morning and I was assisted by a very kind lady, she even offered to get the laundry from my car. The laundry was very clean and smelling nice. They were done by 15:30.</p>
+              <div class="who">Nothando Skhosana · Google review</div>
+            </div>
+            <div class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>I've used Elkana Laundry services a couple of times now, fast turn around times, laundry comes back neatly folded and they collect and deliver at your doorstep. The service is just excellent and they are kind.</p>
+              <div class="who">Thandeka Mahlangu · Google review</div>
+            </div>
+            <div class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>Called in for a favour as first time customer, they assisted me with same day service. Even stayed after closing and kept me updated. Highly recommend.</p>
+              <div class="who">Buyani Xulu · Local Guide, Google review</div>
+            </div>
+            <div class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>Their delivery and collection services make our life so much easier. With this ever changing weather, Elkana is our saviour as I have a guarantee that I'll always have clean and neatly ironed laundry from them.</p>
+              <div class="who">Nomcebo Khanyile · Google review</div>
+            </div>
+            <div class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>The team is professional, welcoming, and truly stand out. The owner, Drikus, is hands-on with his clients, ensuring top-quality service every time. It's your one-stop shop for all fabric care.</p>
+              <div class="who">Damien Botha · Google review</div>
+            </div>
+            <div class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>The owner is such a humble and dedicated person with so much compassion. Clothes came back perfect - ironed with no burn marks and folded professionally.</p>
+              <div class="who">Leah-ann Lewis · Google review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-controls">
+          <button class="review-arrow" id="reviewPrev" aria-label="Previous review">&#8249;</button>
+          <div class="review-dots" id="reviewDots"></div>
+          <button class="review-arrow" id="reviewNext" aria-label="Next review">&#8250;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="visit" class="section-alt">
+    <div class="wrap loc-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:28px;">
+          <div class="kicker">Find us</div>
+          <h2>Visit the shop</h2>
+          <p>35 Geringer Street, Del Judor, eMalahleni 1044</p>
+        </div>
+        <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">07:00 – 19:00</span></div>
+        <div class="hours-row"><span class="day">Saturday</span><span class="time">07:00 – 16:00</span></div>
+        <div class="hours-row"><span class="day">Sunday / Public holiday</span><span class="time">07:00 – 13:00</span></div>
+
+        <div class="contact-card">
+          <div class="contact-row">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><div class="lbl">Phone</div><div class="val">065 851 7691</div></div>
+          </div>
+          <div class="contact-row">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <div><div class="lbl">WhatsApp</div><div class="val">065 851 7691</div></div>
+          </div>
+          <div class="contact-row">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <div><div class="lbl">Email</div><div class="val">elkanalaundry12@gmail.com</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-frame">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=35+Geringer+Street,+Del+Judor,+eMalahleni,+1044&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-name">Elkana</div>
+        <p>35 Geringer Street, Del Judor, Witbank, eMalahleni 1044. Clean, fresh, quality, care - since 2013.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#estimate">Get a quote</a>
+        <a href="#visit">Visit us</a>
+      </div>
+      <div class="foot-col">
+        <h4>Get in touch</h4>
+        <a href="tel:+27658517691">065 851 7691</a>
+        <a href="https://wa.me/27658517691" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:elkanalaundry12@gmail.com">elkanalaundry12@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Elkana Laundry Services Pty Ltd</span>
+      <span>Prices subject to change without notice</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.price-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.price-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.price-list').forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector('.price-list[data-panel="'+tab.dataset.tab+'"]').classList.add('active');
+    });
+  });
+
+  const svc = document.getElementById('svc');
+  const qty = document.getElementById('qty');
+  const estTotal = document.getElementById('estTotal');
+  const qtyUnitLabel = document.getElementById('qtyUnitLabel');
+  const waLink = document.getElementById('waLink');
+
+  function fmtR(n){
+    return 'R' + n.toLocaleString('en-ZA', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+
+  function updateEstimate(){
+    const opt = svc.options[svc.selectedIndex];
+    const rate = parseFloat(opt.dataset.rate);
+    const unit = opt.dataset.unit;
+    qtyUnitLabel.textContent = '(' + unit + ')';
+    let q = parseFloat(qty.value);
+    if(isNaN(q) || q < 0) q = 0;
+    const total = rate * q;
+    estTotal.textContent = fmtR(total);
+
+    const msg = "Hi Elkana Laundry, I'd like a quote for: " + opt.textContent.trim() +
+      " - quantity: " + q + " " + unit + ". Estimated total: " + fmtR(total) + ". Could you confirm pickup availability?";
+    waLink.href = "https://wa.me/27658517691?text=" + encodeURIComponent(msg);
+  }
+
+  svc.addEventListener('change', updateEstimate);
+  qty.addEventListener('input', updateEstimate);
+  updateEstimate();
+
+  // Reviews slideshow
+  (function(){
+    const track = document.getElementById('reviewTrack');
+    const dotsWrap = document.getElementById('reviewDots');
+    const prevBtn = document.getElementById('reviewPrev');
+    const nextBtn = document.getElementById('reviewNext');
+    if(!track) return;
+    const slides = track.children.length;
+    let index = 0;
+    let timer;
+
+    for(let i=0;i<slides;i++){
+      const dot = document.createElement('button');
+      dot.className = 'review-dot' + (i===0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to review ' + (i+1));
+      dot.addEventListener('click', ()=> goTo(i));
+      dotsWrap.appendChild(dot);
+    }
+    const dots = dotsWrap.children;
+
+    function goTo(i){
+      index = (i + slides) % slides;
+      track.style.transform = 'translateX(-' + (index*100) + '%)';
+      Array.from(dots).forEach((d,di)=>d.classList.toggle('active', di===index));
+      restart();
+    }
+    function next(){ goTo(index+1); }
+    function prev(){ goTo(index-1); }
+    function restart(){
+      clearInterval(timer);
+      timer = setInterval(next, 6000);
+    }
+
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+    restart();
+  })();
+</script>
+
+</body>
+</html>
