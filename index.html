@@ -98,8 +98,8 @@
   .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;}
   .badge{font-family:'Oswald',sans-serif; font-size:11.5px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--blue-bright); border:1px solid var(--line-bright); padding:7px 14px; border-radius:2px;}
   .hero .eyebrow{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--blue-bright); margin-bottom:6px;}
-  .hero h1{font-size:clamp(36px,5vw,58px); text-transform:uppercase; margin-bottom:22px;}
-  .hero-sub{font-size:17.5px; color:var(--grey); max-width:48ch; margin-bottom:34px;}
+  .hero h1{font-size:clamp(30px,4.4vw,48px); text-transform:uppercase; margin-bottom:22px;}
+  .hero-sub{font-size:16.5px; color:var(--grey); max-width:56ch; margin-bottom:34px;}
   .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;}
   .hero-trust{display:flex; gap:30px; flex-wrap:wrap; padding-top:26px; border-top:1px solid var(--line);}
   .trust-stat{display:flex; flex-direction:column;}
@@ -115,6 +115,23 @@
   .section-head .kicker{font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--blue-bright); font-size:19px; margin-bottom:8px;}
   .section-head h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:14px; text-transform:uppercase;}
   .section-head p{color:var(--grey); font-size:16.5px;}
+
+
+  /* About */
+  .about-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:56px; align-items:start;}
+  @media (max-width:900px){ .about-grid{grid-template-columns:1fr; gap:36px;} }
+  .about-text p{color:var(--grey); font-size:16.5px; margin-bottom:18px; max-width:62ch;}
+  .about-text h3{font-size:20px; text-transform:uppercase; margin:34px 0 12px;}
+  .about-text .thanks{color:var(--white); font-weight:500;}
+  .about-sign{margin-top:26px; padding-top:22px; border-top:1px solid var(--line);}
+  .about-sign .co{font-family:'Cinzel',serif; font-weight:600; letter-spacing:.06em; font-size:16px; color:var(--white);}
+  .about-sign .tag{font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--blue-bright); font-size:19px; margin-top:4px;}
+  .commit{border:1px solid var(--line-bright); background:linear-gradient(135deg,var(--navy) 0%,var(--black) 100%); padding:32px 30px; box-shadow:0 0 40px rgba(var(--blue-rgb),.08);}
+  .commit h3{font-size:20px; text-transform:uppercase; margin-bottom:18px;}
+  .commit ul{list-style:none;}
+  .commit li{position:relative; padding:13px 0 13px 30px; border-bottom:1px solid var(--line); font-size:15px; color:var(--grey);}
+  .commit li:last-child{border-bottom:none;}
+  .commit li::before{content:""; position:absolute; left:2px; top:20px; width:12px; height:7px; border-left:2px solid var(--blue); border-bottom:2px solid var(--blue); transform:rotate(-45deg);}
 
   /* Services */
   .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
@@ -250,10 +267,11 @@
       </div>
       <div>
         <div class="brand-name">Elkana</div>
-        <div class="brand-sub">Laundry Services · Since 2015</div>
+        <div class="brand-sub">Laundry Services · Since 2013</div>
       </div>
     </div>
     <nav class="nav-links">
+      <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
       <a href="#estimate">Get a quote</a>
@@ -280,14 +298,14 @@
           <span class="badge">Pickup &amp; delivery available</span>
         </div>
         <div class="eyebrow">We do it professionally!!</div>
-        <h1 class="glow-text">Clean. Fresh.<br>Quality. Care.</h1>
-        <p class="hero-sub">Professional laundry, dry cleaning, upholstery, alterations and cleaning services in Del Judor - trusted by families since 2015.</p>
+        <h1 class="glow-text">Welcome to Elkana Laundry Services (Pty) Ltd</h1>
+        <p class="hero-sub">Established in 1996, Elkana Laundry Services has built a proud legacy of quality, reliability, and professional service. Since 2013, under the ownership of Drikus Klaassen, Elkana has continued to grow, evolve, and serve its valued clients with dedication, passion, and a commitment to excellence.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="#estimate">Get an instant quote</a>
           <a class="btn btn-line" href="tel:+27658517691">Call the shop</a>
         </div>
         <div class="hero-trust">
-          <div class="trust-stat"><span class="trust-num" id="yearsNum">11 yrs</span><span class="trust-label">In Del Judor</span></div>
+          <div class="trust-stat"><span class="trust-num" id="yearsNum">13 yrs</span><span class="trust-label">Under current ownership</span></div>
           <div class="trust-stat"><span class="trust-num">9</span><span class="trust-label">Services, one shop</span></div>
           <div class="trust-stat"><span class="trust-num">7 days</span><span class="trust-label">Open every week</span></div>
         </div>
@@ -309,9 +327,43 @@
           <circle cx="238" cy="118" r="4" fill="#5ADCFF" opacity="0.5"/>
           <circle cx="60" cy="230" r="6" fill="none" stroke="#01C5F5" stroke-width="1.2" opacity="0.5"/>
           <circle cx="46" cy="248" r="3" fill="#01C5F5" opacity="0.5"/>
-          <text x="160" y="300" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="16" fill="#5F7685">since 2015</text>
+          <text x="160" y="300" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="16" fill="#5F7685">since 2013</text>
         </svg>
       </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-text">
+        <div class="section-head" style="margin-bottom:18px;">
+          <div class="kicker">About us</div>
+        </div>
+        <p>The name Elkana carries a beautiful and powerful meaning: “God has purchased.” This meaning is deeply rooted in our identity, reminding us of our faith, purpose, and gratitude for the journey that has brought us this far.</p>
+        <p>At Elkana Laundry Services, we believe that exceptional service begins with people who care. Our well-trained and dedicated team strives to deliver outstanding results, ensuring that every garment, every client, and every project receives the attention and professionalism it deserves.</p>
+        <p>We proudly serve both the public and private sectors, offering tailored solutions to individuals, businesses, corporate clients, and institutions. Whether your needs are personal, commercial, or industrial, we are committed to providing dependable service and building long-lasting relationships.</p>
+        <p>We believe in the power of collaboration, community, and mutual growth. By working alongside other local businesses, we aim to strengthen our community while providing our clients with access to a wider range of trusted products and services.</p>
+        <h3>More Than a Laundry - A Legacy of Service</h3>
+        <p>From our humble beginnings in 1996 to the business we are today, Elkana Laundry Services remains committed to its founding values: professionalism, integrity, quality, and service with heart.</p>
+        <p class="thanks">Thank you for being part of our journey.</p>
+        <div class="about-sign">
+          <div class="co">ELKANA LAUNDRY SERVICES (PTY) LTD</div>
+          <div class="tag">We do it professionally!!</div>
+        </div>
+      </div>
+
+      <aside class="commit">
+        <h3>Our Commitment to You</h3>
+        <ul>
+          <li>Open 7 days a week for your convenience.</li>
+          <li>Professionally delivered services with quality and attention to detail.</li>
+          <li>Well-trained and dedicated staff committed to customer satisfaction.</li>
+          <li>Free quotations with no obligation.</li>
+          <li>Public and private sector partnerships to meet diverse service requirements.</li>
+          <li>Collaboration with local businesses to support our community, encourage entrepreneurship, and create opportunities for growth.</li>
+        </ul>
+      </aside>
     </div>
   </section>
 
@@ -519,7 +571,7 @@
         <ul class="why-list">
           <li>
             <span class="mark">01</span>
-            <div><h3>Years in the same neighbourhood</h3><p>Serving Del Judor since 2015, with a storefront you can walk into any day of the week.</p></div>
+            <div><h3>A legacy of service</h3><p>Established in 1996 and under the ownership of Drikus Klaassen since 2013, with a storefront you can walk into any day of the week.</p></div>
           </li>
           <li>
             <span class="mark">02</span>
@@ -678,10 +730,11 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <div class="brand-name">Elkana</div>
-        <p>35 Geringer Street, Del Judor, Witbank, eMalahleni 1044. Clean, fresh, quality, care - since 2015.</p>
+        <p>35 Geringer Street, Del Judor, Witbank, eMalahleni 1044. Clean, fresh, quality, care - since 2013.</p>
       </div>
       <div class="foot-col">
         <h4>Explore</h4>
+        <a href="#about">About us</a>
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
         <a href="#estimate">Get a quote</a>
@@ -704,7 +757,7 @@
 
 <script>
   // Years in business
-  document.getElementById('yearsNum').textContent = (new Date().getFullYear() - 2015) + ' yrs';
+  document.getElementById('yearsNum').textContent = (new Date().getFullYear() - 2013) + ' yrs';
 
   // Price tabs
   const tabs = document.querySelectorAll('.price-tab');
